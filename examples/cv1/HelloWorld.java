@@ -15,6 +15,7 @@ Run the compiled program using the java command: java HelloWorld.
 You should see the output "Hello, World!" displayed in your console.
 
  */
+package examples.cv1;
 
 public class HelloWorld {
     public static void main(String[] args) {
