@@ -10,24 +10,18 @@ public class Example3 {
         // define the array to store data
         int[] array = new int[6];
         int x;
+        int j = 0;
         for (int i = 0; i <= 5; i++) {
             do {
                 x = readInput(scan, i);
                 array[i] = x;
-            } while (x <= 0);
+                j++;
+            } while (j<i);
         }
 
 
-        // loop for check numbers
-        for (int j : array) {
-            if (j > 0) {
-                System.out.println("Kladné číslo");
-            } else if (j < 0) {
-                System.out.println("Záporné číslo");
-            } else {
-                System.out.println("Nula");
-            }
-        }
+
+        checkNumber(array);
     }
 
     public static int readInput(Scanner scan, int i) {
@@ -37,5 +31,20 @@ public class Example3 {
             scan.next(); // this is important!
         }
         return scan.nextInt();
+    }
+
+
+    // loop for check numbers
+    public static void checkNumber(int[] array) {
+        for (int j : array) {
+            if (j > 0) {
+                System.out.println("Kladné číslo");
+            } else if (j < 0) {
+                System.out.println("Záporné číslo");
+            } else {
+                System.out.println("Nula");
+            }
+        }
+
     }
 }
