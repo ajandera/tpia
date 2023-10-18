@@ -24,7 +24,7 @@ public class Example2a {
 
         for (int i = 0; i < sideA; i++) {
             String row = "";
-            for (int j = 0; j <= i; j++) {
+            for (int j = 0; j <= sideA; j++) {
                 row += 'x';
             }
             System.out.println(row);
