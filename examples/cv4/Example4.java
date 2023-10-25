@@ -13,11 +13,13 @@ public class Example4 {
         Results results = new Results();
 
         while (true) {
+            // define size of array
+            int size = validator.readSizeInput();
             // define the array to store data
-            ToDecision decisionArray = new ToDecision(6);
+            ToDecision decisionArray = new ToDecision(size);
             int x;
 
-            for (int i = 0; i <= 5; i++) {
+            for (int i = 0; i < size; i++) {
                 do {
                     x = validator.readInput(i);
                     decisionArray.addNumber(x, i);
@@ -36,6 +38,7 @@ public class Example4 {
         userInput = scanner.nextLine().trim();
         if (userInput.equalsIgnoreCase("quit")) {
             System.out.println("Exiting the application. Goodbye!");
+            System.exit(0);
         }
     }
 

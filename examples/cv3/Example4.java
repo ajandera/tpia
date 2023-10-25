@@ -6,29 +6,24 @@ public class Example4 {
     public static void main(String[] args) {
         // load Validator
         InputValidator validator = new InputValidator();
+        CheckNumber cn = new CheckNumber();
 
         // define the array to store data
         int[] array = new int[6];
         int x;
-
+        int j = 0;
         for (int i = 0; i <= 5; i++) {
             do {
                 x = validator.readInput(i);
                 array[i] = x;
-            } while (x <= 0);
+                j++;
+            } while (j < i);
         }
 
-        // loop for check numbers
-        for (int j : array) {
-            if (j > 0) {
-                System.out.println("Kladné číslo");
-            } else if (j < 0) {
-                System.out.println("Záporné číslo");
-            } else {
-                System.out.println("Nula");
-            }
-        }
+        cn.checkNumber(array);
     }
+
+
 }
 
 class InputValidator {
@@ -42,5 +37,20 @@ class InputValidator {
             scan.next();
         }
         return scan.nextInt();
+    }
+}
+
+class CheckNumber {
+    // loop for check numbers
+    public static void checkNumber(int[] array) {
+        for (int j : array) {
+            if (j > 0) {
+                System.out.println("Kladné číslo");
+            } else if (j < 0) {
+                System.out.println("Záporné číslo");
+            } else {
+                System.out.println("Nula");
+            }
+        }
     }
 }
