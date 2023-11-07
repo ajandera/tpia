@@ -13,7 +13,7 @@ Provide appropriate setter and getter methods to encapsulate these attributes. I
 
 Write a separate Java program that demonstrates the usage of the bank account class. Create an instance of the bank account, deposit and withdraw funds, and display the final balance.
 
-**Homework Assignment 2: Method Overloading**
+**Homework Assignment 3: Method Overloading**
 
 Create a Java class named "Calculator" with methods for performing basic mathematical operations like addition, subtraction, multiplication, and division. Use method overloading to provide multiple versions of each operation to handle different data types (e.g., int, double).
 
