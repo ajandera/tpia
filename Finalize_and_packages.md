@@ -1,4 +1,4 @@
-Finalize in Java: Understanding Object Cleanup and Resource Management
+    Finalize in Java: Understanding Object Cleanup and Resource Management
 
 In the world of Java programming, the `finalize` method plays a significant role in the context of object cleanup and resource management. This method provides a mechanism for developers to perform necessary cleanup operations on objects before they are garbage collected. In this discussion, we'll explore the `finalize` method, its usage, and its significance in Java.
 
