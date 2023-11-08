@@ -19,8 +19,6 @@ public class Example3 {
             } while (j<i);
         }
 
-
-
         checkNumber(array);
     }
 
