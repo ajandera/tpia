@@ -1,4 +1,4 @@
-package examples.homework2;
+package examples.homework2.Yelyzaveta_Barvynska;
 
 public class Homework2_Barvynska {
     private String accountHolderName;
