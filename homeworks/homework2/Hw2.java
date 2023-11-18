@@ -1,30 +1,49 @@
 package homework2;
 
-public class Hw2 {
+interface Math {
+    int add(int a, int b);
+
+    double add(double a, double b);
+
+    int subtract(int a, int b);
+
+    double subtract(double a, double b);
+
+    int multiply(int a, int b);
+
+    double multiply(double a, double b);
+
+    int divide(int a, int b);
+
+    double divide(double a, double b);
+}
+
+public class Hw2 implements Math {
+    @Override
     public int add(int a, int b) {
         return a + b;
     }
-
+    @Override
     public double add(double a, double b) {
         return a + b;
     }
-
+    @Override
     public int subtract(int a, int b) {
         return a - b;
     }
-
+    @Override
     public double subtract(double a, double b) {
         return a - b;
     }
-
+    @Override
     public int multiply(int a, int b) {
         return a * b;
     }
-
+    @Override
     public double multiply(double a, double b) {
         return a * b;
     }
-
+    @Override
     public int divide(int a, int b) {
         if (b != 0) {
             return a / b;
@@ -33,7 +52,7 @@ public class Hw2 {
             return 0;
         }
     }
-
+    @Override
     public double divide(double a, double b) {
         if (b != 0) {
             return a / b;
