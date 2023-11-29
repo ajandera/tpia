@@ -1,4 +1,4 @@
-package examples.cv10;
+package cv10;
 
 import java.util.ArrayList;
 
