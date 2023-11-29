@@ -1,4 +1,4 @@
-package cv10;
+package examples.cv10;
 
 import java.util.Arrays;
 

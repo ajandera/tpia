@@ -1,4 +1,4 @@
-package cv10;
+package examples.cv10;
 
 public class ArraysExample {
     public static void main(String[] args) {

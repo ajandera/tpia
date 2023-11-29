@@ -1,7 +1,7 @@
 # Final homework
 
 Create application by your own.\
-Theme is independent,but you have to pass minimal requirements.
+Topic is independent,but you have to pass minimal requirements.
 
 Minimal requirements:
  - min 3 classes
