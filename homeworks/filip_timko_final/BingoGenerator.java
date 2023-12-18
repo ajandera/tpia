@@ -1,83 +1,111 @@
 package homeworks.filip_timko_final;
-//Defining
-import java.util.Arrays;
+
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Arrays;
 
-public class BingoGenerator {
+// Game interface that provides a method for starting the game
+interface Game {
+    void startGame();
+}
 
-    public static void main(String[] args) {
-        playBingo();
-    }
-
-    public static void playBingo() {
-        // Prompt user to enter the length of the array
-        System.out.println("Please enter the number of elements in the array:");
-
-        // Create an object of the InputValidation class to handle user input validation
-        InputValidation validator = new InputValidation();
-
-        // Read the user's input and store it in the variable 'arrayLength'
-        int arrayLength = validator.readIt();
-
-        // Create an array of integers with the specified length
-        Integer[] array = new Integer[arrayLength];
-
-        // Create a random object to generate random numbers
-        Random random = new Random();
-
-        // Create an array of the specified length and fill it with random numbers
-        for (int i = 0; i < arrayLength; i++) {
-            array[i] = random.nextInt(100); // Random number between 1 and 100
-        }
-
-        // Print the unsorted array
-        System.out.println("The original array is:");
-        System.out.println(Arrays.toString(array));
-
-        // Sort the array in ascending order
-        Arrays.sort(array);
-
-        // Print the sorted array
-        System.out.println("The sorted array is:");
-        System.out.println(Arrays.toString(array));
-
-        // Call the afterRun() method to check if the user wants to play again
-        afterRun();
-    }
-
-    private static void afterRun() {
-        // Ask the user if they want to play again
-        System.out.println("Do you want to play again? Enter yes or no:");
-
-        // Create a scanner object to read the user's input
-        Scanner scanner = new Scanner(System.in);
-
-        // Read the user's response and store it in the variable 'playAgain'
-        String playAgain = scanner.next();
-
-        // Close the scanner object to avoid memory leak
-        scanner.close();
-
-        // Check the user's response
-        if (playAgain.equalsIgnoreCase("yes")) {
-            // If the user wants to play again, call the playBingo() method
-            playBingo();
-        } else if (playAgain.equalsIgnoreCase("no")) {
-            // If the user don´t wants to play again, it will print Goodbye
-            System.out.println("Thanks for playing! Goodbye.");
-        } else {
-            System.out.println("Thanks for playing! Goodbye.");
-        }
-    }
+public class BingoGenerator implements Game {
 
     @Override
-    protected void finalize() throws Throwable {
-        try {
-            // clear the resources if needed
-            System.gc();
-        } finally {
-            super.finalize();
+    public void startGame() {
+        boolean Continue = true; // Control the game loop
+        while(Continue) {
+            Player player = new Player(); // Create a new Player object
+            int arrayLength = player.getArrayLength(); // Get the length of the array from the player
+
+            RandomNumberGenerator rng = new RandomNumberGenerator(); // Create a new RandomNumberGenerator object
+            int[] array = rng.generateRandomNumbers(arrayLength); // Generate an array of random numbers using the rng object
+
+            player.showArray(array); // Display the original array to the player
+
+            Sorter sorter = new Sorter(); // Create a new Sorter object
+            int[] sortedArray = sorter.sort(array); // Sort the array using the sorter object
+
+            player.showSortedArray(sortedArray); // Display the sorted array to the player
+
+            Continue = player.getContinueGame(); // Check if the player wants to continue playing
         }
+    }
+
+    // Main method to start the game
+    public static void main(String[] args) {
+        Game game = new BingoGenerator();
+        game.startGame();
+    }
+}
+
+class Player {
+
+    private Scanner scanner;
+
+    public Player() {
+        scanner = new Scanner(System.in);
+    }
+
+    // Method to get the length of the array from the player
+    public int getArrayLength() {
+        int arrayLength = 0;
+        while (true) {
+            System.out.println("Enter the length of the array:");
+            if (scanner.hasNextInt()) {
+                arrayLength = scanner.nextInt();
+                if (arrayLength > 0) {
+                    break;
+                } else {
+                    System.out.println("Error: The length should be greater than zero.");
+                }
+            } else {
+                System.out.println("Error: The length should be an integer.");
+                scanner.next();
+            }
+        }
+        return arrayLength;
+    }
+
+    // Method to display the original array to the player
+    public void showArray(int[] array) {
+        System.out.println("The original array is:");
+        System.out.println(Arrays.toString(array));
+        System.out.println();
+    }
+
+    // Method to display the sorted array to the player
+    public void showSortedArray(int[] sortedArray) {
+        System.out.println("The sorted array is:");
+        System.out.println(Arrays.toString(sortedArray));
+        System.out.println();
+    }
+
+    // Method to check if the player wants to continue playing
+    public boolean getContinueGame() {
+        System.out.println("Do you want to continue? Enter 'yes' or 'no':");
+        String choice = scanner.next();
+        return choice.equalsIgnoreCase("yes");
+    }
+}
+
+class RandomNumberGenerator {
+    Random random = new Random();
+    public int[] generateRandomNumbers(int length) {
+        int[] array = new int[length];
+
+        // Create an array of the specified length and fill it with random numbers
+        for (int i = 0; i < length; i++) {
+            array[i] = random.nextInt(100); // Random number between 1 and 100
+        }
+        return array;
+    }
+}
+
+class Sorter {
+
+    public int[] sort(int[] array) {
+        Arrays.sort(array);
+        return array;
     }
 }
